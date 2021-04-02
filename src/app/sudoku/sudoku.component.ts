@@ -17,7 +17,7 @@ import { COORD, emptyBoard, BoardProcessed } from "../generator";
 export class SudokuComponent implements OnInit {
   @Input() board: BoardProcessed = emptyBoard;
   @Output() caseClicked = new EventEmitter<COORD>();
-  private selectCase: [number, number, number] = [-1, -1, -1];
+  private selectCase: COORD = { x: -1, y: -1, value: -1 };
 
   constructor() {}
 
@@ -31,16 +31,15 @@ export class SudokuComponent implements OnInit {
     }
   }
 
-  getSelectCase(): [number, number, number] {
-    return this.selectCase;
+  getSelectCase(): number[] {
+    return [this.selectCase.x, this.selectCase.y];
   }
 
   wantPlayHere(y: number, x: number, v: number): void {
     if (this.board.isInitial[y][x] === false) {
       console.log("NOT INITIAL CASE");
-      this.selectCase = [x, y, v];
-      //console.log(this.selectCase);
-      this.caseClicked.emit((this.selectCase as unknown) as COORD);
+      this.selectCase = { x: x, y: y, value: v };
+      this.caseClicked.emit(this.selectCase);
     }
   }
 }
