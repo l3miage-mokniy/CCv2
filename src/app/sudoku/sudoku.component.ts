@@ -36,11 +36,11 @@ export class SudokuComponent implements OnInit {
   }
 
   wantPlayHere(y: number, x: number, v: number): void {
-    if (this.board.data[y][x] === 0) {
-      console.log("case vide");
+    if (this.board.isInitial[y][x] === false) {
+      console.log("NOT INITIAL CASE");
+      this.selectCase = [x, y, v];
+      //console.log(this.selectCase);
+      this.caseClicked.emit((this.selectCase as unknown) as COORD);
     }
-    this.selectCase = [y, x, v];
-    //console.log(this.selectCase);
-    this.caseClicked.emit((this.selectCase as unknown) as COORD);
   }
 }

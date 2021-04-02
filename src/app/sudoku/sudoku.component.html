@@ -2,7 +2,7 @@
   <tbody>
     <tr [class.internalBorder]="isInternal(i,board.size)" *ngFor="let item of board.data; index as i;">
       <td [class.internalBorder]="isInternal(j,board.size)" [class.isInitial]="board.isInitial[i][j]"
-        [class.isSelected]="getSelectCase()[0]==i && getSelectCase()[1]==j" (click)="wantPlayHere(i,j, case)"
+        [class.isSelected]="getSelectCase()[0]==j && getSelectCase()[1]==i" (click)="wantPlayHere(i,j, case)"
         *ngFor="let case of item; index as j;">
         <div *ngIf="case !== 0">
           {{case}}

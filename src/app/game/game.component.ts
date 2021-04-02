@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from "@angular/core";
-import { BehaviorSubject, Observable } from "rxjs";
+import { BehaviorSubject, observable, Observable } from "rxjs";
 import { BoardService } from "../board.service";
 import { COORD, BoardProcessed } from "../generator";
 
@@ -10,6 +10,8 @@ import { COORD, BoardProcessed } from "../generator";
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class GameComponent implements OnInit {
+  private observable = new BehaviorSubject<number[]>([]);
+
   constructor(private BS: BoardService) {}
 
   get obsSudo(): Observable<BoardProcessed> {
@@ -21,6 +23,9 @@ export class GameComponent implements OnInit {
 
   receiveCase(v: COORD): void {
     console.log(v);
+    this.BS.canPlay(v);
+    //this.observable.next(this.BS.canPlay(v));
+    //this.BS.canPlay(v);
   }
 
   ngOnInit(): void {}

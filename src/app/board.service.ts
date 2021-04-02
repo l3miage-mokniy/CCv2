@@ -68,6 +68,7 @@ export class BoardService {
   }
 
   canPlay({ x, y, value }: COORD): number[] {
+    console.log(x, y, value);
     const L: number[] = [];
     const n = Math.sqrt(this.initial.data.length);
     const p = n * Math.floor(y / n) + Math.floor(x / n);
