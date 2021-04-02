@@ -1,0 +1,17 @@
+Sudoku.component.html à compléter...
+<table>
+  <tbody>
+    <tr [class.internalBorder]="isInternal(i,board.size)" *ngFor="let item of board.data; index as i;">
+      <td [class.internalBorder]="isInternal(j,board.size)" [class.isInitial]="board.isInitial[i][j]"
+        (click)="wantPlayHere(i,j)" *ngFor="let case of item; index as j;">
+        <div *ngIf="case !== 0">
+          {{case}}
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<pre>
+  {{ board | json }}
+</pre>
