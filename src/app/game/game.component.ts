@@ -15,6 +15,8 @@ export class GameComponent implements OnInit {
   get obsSudo(): Observable<BoardProcessed> {
     return this.BS.observable;
   }
-
+  newGame(): void {
+    this.BS.newGame();
+  }
   ngOnInit(): void {}
 }
