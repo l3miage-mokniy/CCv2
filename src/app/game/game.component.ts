@@ -18,5 +18,10 @@ export class GameComponent implements OnInit {
   newGame(): void {
     this.BS.newGame();
   }
+
+  receiveCase(v: COORD): void {
+    console.log(v);
+  }
+
   ngOnInit(): void {}
 }

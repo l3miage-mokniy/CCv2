@@ -5,11 +5,10 @@
   </button>
 </section>
 
-<app-sudoku [board]="SUDO" *ngIf="obsSudo | async as SUDO"> </app-sudoku>
-
+<app-sudoku [board]="SUDO" *ngIf="obsSudo | async as SUDO" (caseClicked)="receiveCase($event)"> </app-sudoku>
+<!-- balise app-sudoku (event) de type coord-->
 
 <hr />
 <section class=" play">
-
   Insérer ici la liste des coups possibles pour la case sélectionnée
 </section>
