@@ -1,4 +1,5 @@
 <h2>Partie de Sudoku</h2>
+<h3>VOIR CONSOLE (DEBUT CAN PLAY)</h3>
 <section>
   <button (click)="newGame()">
     Nouvelle partie
@@ -12,6 +13,8 @@
 <section class="play">
   <!-- BALISE label AVEC FOR SUR LISTE DE COUP POSSIBLE -->
   {{obsActualCase}}
+  {{casePlayable()}}
+
   <label>
 
   </label>

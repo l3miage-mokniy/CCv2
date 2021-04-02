@@ -11,7 +11,11 @@ import { filter, map } from "rxjs/operators";
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class GameComponent implements OnInit {
-  private observableCase = new BehaviorSubject<COORD | undefined>(undefined);
+  private observableCase = new BehaviorSubject<COORD>({
+    x: -1,
+    y: -1,
+    value: -1
+  });
 
   constructor(private BS: BoardService) {}
 
@@ -34,6 +38,13 @@ export class GameComponent implements OnInit {
 
   playable(): Observable<number[]> {
     const tst = this.observableCase.pipe(map(n => filter(n => n !== -1)));
+    return null;
+  }
+
+  casePlayable(): number[] {
+    if (this.observableCase.value.x !== -1) {
+      return this.BS.canPlay(this.observableCase.value);
+    }
     return null;
   }
 
